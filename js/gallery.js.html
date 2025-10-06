@@ -1,0 +1,48 @@
+async function fetchGallery() {
+  try {
+    const res = await fetch('/.netlify/functions/list-gallery-files'); // Netlify Function
+    const data = await res.json();
+    renderGallery(data.files || []);
+  } catch (e) {
+    console.error('Gallery load failed', e);
+    // Fallback: if function unavailable, try static JSON
+    try {
+      const res = await fetch('/assets/gallery/images.json');
+      const data = await res.json();
+      renderGallery(data.files || []);
+    } catch (_){}
+  }
+}
+
+function renderGallery(files){
+  const root = document.getElementById('gallery');
+  if(!root) return;
+  if(!files.length){
+    root.innerHTML = '<p>No images yet. Add files into <code>/assets/gallery/</code>.</p>';
+    return;
+  }
+  const frag = document.createDocumentFragment();
+  files.forEach((name)=>{
+    const fig = document.createElement('figure');
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.src = `/assets/gallery/${encodeURIComponent(name)}`;
+    img.alt = 'Kilkenny Haunted Dark Tours';
+    img.addEventListener('click',()=>openLightbox(img.src, name));
+    fig.appendChild(img);
+    frag.appendChild(fig);
+  });
+  root.innerHTML = '';
+  root.appendChild(frag);
+}
+
+function openLightbox(src, caption){
+  const dlg = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-caption');
+  img.src = src; cap.textContent = caption || '';
+  dlg.showModal();
+}
+document.getElementById('lightbox-close')?.addEventListener('click',()=>document.getElementById('lightbox').close());
+
+fetchGallery();

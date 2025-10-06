@@ -1,0 +1,26 @@
+// Lists files in /assets/gallery and returns JSON for the front-end
+// IMPORTANT: see netlify.toml to include the folder in the function bundle
+
+const fs = require('fs');
+const path = require('path');
+
+exports.handler = async () => {
+  try {
+    const root = path.resolve(__dirname, '../../'); // functions/ -> project root
+    const galleryDir = path.join(root, 'assets', 'gallery');
+
+    const all = fs.readdirSync(galleryDir, { withFileTypes: true })
+      .filter(f => f.isFile())
+      .map(f => f.name)
+      .filter(n => /\.(jpe?g|png|webp|gif)$/i.test(n))
+      .sort((a,b)=>a.localeCompare(b, undefined, {numeric:true}));
+
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json', 'Cache-Control':'max-age=60' },
+      body: JSON.stringify({ files: all })
+    };
+  } catch (err) {
+    return { statusCode: 500, body: JSON.stringify({ error: String(err) }) };
+  }
+};

@@ -1,0 +1,40 @@
+// Minimal performant fog effect (single canvas, noise scroll)
+(function(){
+  const canvas = document.getElementById('fog-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w,h,noiseCanvas,noiseCtx,step=0;
+
+  function resize(){
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+    noiseCanvas = document.createElement('canvas');
+    noiseCanvas.width = w; noiseCanvas.height = h;
+    noiseCtx = noiseCanvas.getContext('2d');
+    drawNoise();
+  }
+
+  function drawNoise(){
+    const id = noiseCtx.createImageData(w,h);
+    const d = id.data;
+    for(let i=0;i<d.length;i+=4){
+      const v = 200 + (Math.random()*55|0); // bright noise to mix-blend screen
+      d[i]=d[i+1]=d[i+2]=v;
+      d[i+3]=16; // opacity
+    }
+    noiseCtx.putImageData(id,0,0);
+  }
+
+  function tick(){
+    step += 0.2;
+    const x = Math.sin(step/50)*10;
+    const y = Math.cos(step/80)*10;
+    ctx.clearRect(0,0,w,h);
+    ctx.globalAlpha = 0.6;
+    ctx.drawImage(noiseCanvas, x, y);
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('resize', resize);
+  resize(); tick();
+})();

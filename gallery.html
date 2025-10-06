@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery • Kilkenny Haunted Dark Tours</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-32.png" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <img src="/assets/images/KHDT Logo Butterslip Transparent.png" alt="KHDT logo">
+      </a>
+      <nav class="nav">
+        <a href="/#tours">Tours</a>
+        <a class="active" href="/gallery.html">Gallery</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/#contact">Contact</a>
+        <a class="btn btn-glow" href="https://www.tripadvisor.ie/Attraction_Review-g186616-d23362908-Reviews-Kilkenny_haunted_dark_tours-Kilkenny_County_Kilkenny.html" target="_blank" rel="noopener">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <h1 class="section-title">Gallery</h1>
+      <p>Drop images into <code>/assets/gallery/</code> and they will appear here automatically.</p>
+
+      <div id="gallery" class="gallery-grid" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <dialog id="lightbox">
+    <button id="lightbox-close" aria-label="Close">×</button>
+    <img id="lightbox-img" alt="">
+    <p id="lightbox-caption"></p>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/images/KHDT Logo Butterslip Transparent.png" alt="KHDT">
+        <p>© <span id="y"></span> Kilkenny Haunted Dark Tours</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/gallery.js"></script>
+</body>
+</html>
