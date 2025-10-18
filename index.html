@@ -36,15 +36,14 @@
     details{background:var(--bg-soft);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:14px 16px;margin:10px 0;color:var(--text)}
     footer{padding:40px 0 50px;color:var(--muted);border-top:1px solid rgba(255,255,255,.1);background:#0a0908;text-align:center}
     .tiny{font-size:.9rem}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
     iframe{border:0;width:100%;height:360px;border-radius:12px}
 
-    /* Carousel styling */
+    /* ✅ Carousel Styling */
     .carousel-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 500px;
+      height: 480px;
       background-color: var(--bg);
       position: relative;
       border-radius: var(--radius);
@@ -52,13 +51,22 @@
       overflow: hidden;
     }
 
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 100%;
+    }
+
     .carousel img {
       position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* show whole image */
+      background-color: #000;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      cursor: pointer;
     }
 
     .carousel img.active {
@@ -76,8 +84,28 @@
       padding: 4px 10px;
       border-radius: 6px;
     }
+
+    /* ✅ Lightbox popup */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    .lightbox.visible {display: flex;}
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav">
@@ -94,7 +122,6 @@
   </header>
 
   <main class="wrap">
-    <!-- Existing sections unchanged until gallery -->
     <section class="hero">
       <h1>Step into Kilkenny’s dark past</h1>
       <p>Step into the shadows of Kilkenny’s medieval streets and uncover the city’s darkest secrets...</p>
@@ -104,9 +131,7 @@
       </div>
     </section>
 
-    <!-- ... all other sections remain unchanged ... -->
-
-    <!-- ✅ NEW GALLERY CAROUSEL -->
+    <!-- ✅ Gallery Carousel -->
     <section id="gallery">
       <div class="carousel-container">
         <div class="carousel">
@@ -124,7 +149,6 @@
       </div>
     </section>
 
-    <!-- rest of your sections remain unchanged -->
     <section id="faqs">
       <h2>FAQs</h2>
       <details><summary>Is it suitable for children?</summary><p>Our standard walks focus on history and folklore...</p></details>
@@ -132,7 +156,7 @@
 
     <section id="contact">
       <h2>Book or enquire</h2>
-      <!-- your form etc. -->
+      <!-- your form etc -->
     </section>
   </main>
 
@@ -143,7 +167,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Carousel logic
+    // ✅ Carousel logic
     const slides = document.querySelectorAll('.carousel img');
     let index = 0;
 
@@ -153,14 +177,35 @@
       slides[index].classList.add('active');
     }
 
-    // Auto-slide every 4 seconds
+    // Auto-slide every 4s
     let autoSlide = setInterval(nextSlide, 4000);
 
-    // Allow click to manually advance
+    // Manual click to next
     document.querySelector('.carousel').addEventListener('click', () => {
       clearInterval(autoSlide);
       nextSlide();
       autoSlide = setInterval(nextSlide, 4000);
+    });
+
+    // ✅ Lightbox functionality
+    const lightbox = document.createElement('div');
+    lightbox.classList.add('lightbox');
+    document.body.appendChild(lightbox);
+    const lightboxImg = document.createElement('img');
+    lightbox.appendChild(lightboxImg);
+
+    slides.forEach(img => {
+      img.addEventListener('click', e => {
+        clearInterval(autoSlide); // pause carousel
+        lightboxImg.src = e.target.src;
+        lightbox.classList.add('visible');
+      });
+    });
+
+    // Close lightbox on click
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('visible');
+      autoSlide = setInterval(nextSlide, 4000); // resume carousel
     });
   </script>
 </body>
