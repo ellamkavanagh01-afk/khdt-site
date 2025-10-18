@@ -38,7 +38,7 @@
     .tiny{font-size:.9rem}
     iframe{border:0;width:100%;height:360px;border-radius:12px}
 
-    /* ✅ Carousel Styling */
+    /* ✅ Carousel Styles */
     .carousel-container {
       display: flex;
       justify-content: center;
@@ -62,7 +62,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: contain; /* keeps full image */
       background-color: #000;
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -83,7 +83,6 @@
       border-radius: 6px;
     }
 
-    /* ✅ Lightbox popup */
     .lightbox {
       display: none;
       position: fixed;
@@ -169,8 +168,10 @@
       <div class="card"><iframe src="https://www.google.com/maps?q=Kilkenny%20Castle&output=embed" title="Map of meeting point in Kilkenny"></iframe></div>
     </section>
 
-    <!-- ✅ Gallery Carousel -->
+    <!-- ✅ REPLACED GALLERY SECTION -->
     <section id="gallery">
+      <h2>Gallery</h2>
+      <p class="sub">A glimpse of the lanes, arches and faces you’ll meet along the way.</p>
       <div class="carousel-container">
         <div class="carousel">
           <img src="assets/gallery/001.jpeg" class="active" alt="">
@@ -189,8 +190,8 @@
 
     <section id="faqs">
       <h2>FAQs</h2>
-      <details><summary>Is it suitable for children?</summary><p>Our standard walks focus on history and folklore with a spooky atmosphere rather than jump scares.</p></details>
-      <details><summary>What should I bring?</summary><p>Comfortable shoes, a warm layer and a small umbrella if rain is forecast.</p></details>
+      <details><summary>Is it suitable for children?</summary><p>Our standard walks focus on history and folklore with a spooky atmosphere rather than jump scares. We can adjust tone for younger groups with advance notice.</p></details>
+      <details><summary>What should I bring?</summary><p>Comfortable shoes, a warm layer and a small umbrella if rain is forecast. The route is mostly flat with regular stops.</p></details>
       <details><summary>Is it accessible?</summary><p>Parts of the old town have cobbles and narrow paths. Let us know any requirements and we will plan the most suitable route.</p></details>
       <details><summary>What happens in bad weather?</summary><p>Tours run in most conditions. In severe weather we will contact you with options to reschedule or refund.</p></details>
     </section>
@@ -219,47 +220,37 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-    // ✅ Carousel logic
-    const slides = document.querySelectorAll('.carousel img');
-    let index = 0;
-
-    function nextSlide() {
+    const slides=document.querySelectorAll('.carousel img');
+    let index=0;
+    function nextSlide(){
       slides[index].classList.remove('active');
-      index = (index + 1) % slides.length;
+      index=(index+1)%slides.length;
       slides[index].classList.add('active');
     }
-
-    // Auto-slide every 4s
-    let autoSlide = setInterval(nextSlide, 4000);
-
-    // Manual click to next
-    document.querySelector('.carousel').addEventListener('click', () => {
+    let autoSlide=setInterval(nextSlide,4000);
+    document.querySelector('.carousel').addEventListener('click',()=>{
       clearInterval(autoSlide);
       nextSlide();
-      autoSlide = setInterval(nextSlide, 4000);
+      autoSlide=setInterval(nextSlide,4000);
     });
 
-    // ✅ Lightbox functionality
-    const lightbox = document.createElement('div');
+    const lightbox=document.createElement('div');
     lightbox.classList.add('lightbox');
     document.body.appendChild(lightbox);
-    const lightboxImg = document.createElement('img');
+    const lightboxImg=document.createElement('img');
     lightbox.appendChild(lightboxImg);
-
-    slides.forEach(img => {
-      img.addEventListener('click', e => {
+    slides.forEach(img=>{
+      img.addEventListener('click',e=>{
         clearInterval(autoSlide);
-        lightboxImg.src = e.target.src;
+        lightboxImg.src=e.target.src;
         lightbox.classList.add('visible');
       });
     });
-
-    // Close lightbox on click
-    lightbox.addEventListener('click', () => {
+    lightbox.addEventListener('click',()=>{
       lightbox.classList.remove('visible');
-      autoSlide = setInterval(nextSlide, 4000);
+      autoSlide=setInterval(nextSlide,4000);
     });
   </script>
 </body>
