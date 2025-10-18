@@ -62,16 +62,14 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: contain; /* show whole image */
+      object-fit: contain;
       background-color: #000;
       opacity: 0;
       transition: opacity 1s ease-in-out;
       cursor: pointer;
     }
 
-    .carousel img.active {
-      opacity: 1;
-    }
+    .carousel img.active {opacity: 1;}
 
     .carousel::after {
       content: "Click or wait to view next →";
@@ -124,11 +122,51 @@
   <main class="wrap">
     <section class="hero">
       <h1>Step into Kilkenny’s dark past</h1>
-      <p>Step into the shadows of Kilkenny’s medieval streets and uncover the city’s darkest secrets...</p>
+      <p>Step into the shadows of Kilkenny’s medieval streets and uncover the city’s darkest secrets. Our evening walking tour brings you face to face with the real haunted history of Ireland’s most atmospheric city.</p>
+      <p>Beginning at the magnificent Kilkenny Castle, you’ll journey through centuries of chilling tales — from ghostly apparitions to eerie legends whispered through time. Follow your guide down Mary’s Lane and through the narrow Butter Slip, where spirits are said to linger long after nightfall. The tour concludes at the historic Courthouse, a site steeped in stories of trials, tragedy, and restless souls.</p>
+      <p>Every story told on this tour is rooted in real events, real people, and real hauntings — no gimmicks, no jump scares, just the true dark side of Kilkenny brought to life through expert storytelling.</p>
+      <p><em>Join us if you dare... and see Kilkenny as you’ve never seen it before.</em></p>
       <div style="margin-top:16px;">
         <a class="btn" href="#contact">Book the Night Tour</a>
         <a class="btn ghost" href="#times">See prices</a>
       </div>
+    </section>
+
+    <section id="times">
+      <h2>Times & Prices</h2>
+      <p class="sub">Seasonal schedules and offers may apply. Contact us to confirm availability for your date.</p>
+      <div class="card" style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr><th>Tour</th><th>Start Time</th><th>Duration</th><th>Price</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Kilkenny Haunted Dark Tour</strong></td><td>Evenings</td><td>~60 mins</td><td><span style="color:var(--accent-2)">Adults €18</span> · Youth €13 · Child €12 · Under 5 free</td></tr>
+            <tr><td><strong>Private Tour</strong></td><td>By arrangement</td><td>Flexible</td><td>Group rates available</td></tr>
+          </tbody>
+        </table>
+        <p class="tiny" style="margin-top:10px;color:var(--muted);">Child and family options available. Accessibility notes on request.</p>
+      </div>
+    </section>
+
+    <section id="daytour">
+      <h2>Daytime Haunted Tour</h2>
+      <p class="sub">See Kilkenny’s haunted past in a whole new light. Our daytime walking tour follows the same route as our evening experience — from Kilkenny Castle through Mary’s Lane and the Butter Slip, ending at the historic Courthouse — but with a focus on the real stories, legends, and darker chapters that shaped the city through the centuries.</p>
+      <p>Discover how truth and folklore intertwine in Kilkenny’s medieval streets as you explore tales of witchcraft, crime, and mystery beneath the surface of this beautiful city.</p>
+      <p><em>Perfect for those who love history with a twist — all the atmosphere, none of the darkness.</em></p>
+      <div class="card" style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>Tour</th><th>Start Times</th><th>Duration</th><th>Price</th></tr></thead>
+          <tbody><tr><td><strong>Kilkenny Haunted Day Tour</strong></td><td>10:30 AM · 2:00 PM</td><td>~60 mins</td><td><span style="color:var(--accent-2)">Adults €18</span> · Youth €13 · Child €12 · Under 5 free</td></tr></tbody>
+        </table>
+        <div style="margin-top:18px;"><a class="btn" href="#contact">Book a Day Tour</a></div>
+      </div>
+    </section>
+
+    <section id="meeting">
+      <h2>Meeting point</h2>
+      <p class="sub">We meet at a central landmark in Kilkenny, the Kilkenny Castle. Your confirmation email will include exact directions.</p>
+      <div class="card"><iframe src="https://www.google.com/maps?q=Kilkenny%20Castle&output=embed" title="Map of meeting point in Kilkenny"></iframe></div>
     </section>
 
     <!-- ✅ Gallery Carousel -->
@@ -151,12 +189,28 @@
 
     <section id="faqs">
       <h2>FAQs</h2>
-      <details><summary>Is it suitable for children?</summary><p>Our standard walks focus on history and folklore...</p></details>
+      <details><summary>Is it suitable for children?</summary><p>Our standard walks focus on history and folklore with a spooky atmosphere rather than jump scares.</p></details>
+      <details><summary>What should I bring?</summary><p>Comfortable shoes, a warm layer and a small umbrella if rain is forecast.</p></details>
+      <details><summary>Is it accessible?</summary><p>Parts of the old town have cobbles and narrow paths. Let us know any requirements and we will plan the most suitable route.</p></details>
+      <details><summary>What happens in bad weather?</summary><p>Tours run in most conditions. In severe weather we will contact you with options to reschedule or refund.</p></details>
     </section>
 
     <section id="contact">
       <h2>Book or enquire</h2>
-      <!-- your form etc -->
+      <p class="sub">Tell us your preferred date, group size and any access needs. We reply quickly.</p>
+      <div class="card">
+        <p><a class="btn" href="mailto:kilkennyhaunteddarktours@gmail.com">Email</a>
+        <a class="btn ghost" href="https://wa.me/353876230932" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="https://www.viator.com/tours/Kilkenny/Kilkenny-City-Free-guided-tour/d24499-250556P1" target="_blank" rel="noopener">Book on Viator</a></p>
+        <p class="tiny">Prefer a call? <a href="tel:+353876230932">+353 (87) 623 0932</a></p>
+        <form name="enquiry" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="enquiry" />
+          <label for="name" class="tiny">Name</label><input id="name" name="name" required style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);margin-bottom:8px;background:#14110f;color:var(--text)"/>
+          <label for="email" class="tiny">Email</label><input id="email" name="email" type="email" required style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);margin-bottom:8px;background:#14110f;color:var(--text)"/>
+          <label for="message" class="tiny">Message</label><textarea id="message" name="message" rows="4" required style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#14110f;color:var(--text);margin-bottom:8px"></textarea>
+          <button type="submit" class="btn" style="width:100%">Send</button>
+        </form>
+      </div>
     </section>
   </main>
 
@@ -196,7 +250,7 @@
 
     slides.forEach(img => {
       img.addEventListener('click', e => {
-        clearInterval(autoSlide); // pause carousel
+        clearInterval(autoSlide);
         lightboxImg.src = e.target.src;
         lightbox.classList.add('visible');
       });
@@ -205,7 +259,7 @@
     // Close lightbox on click
     lightbox.addEventListener('click', () => {
       lightbox.classList.remove('visible');
-      autoSlide = setInterval(nextSlide, 4000); // resume carousel
+      autoSlide = setInterval(nextSlide, 4000);
     });
   </script>
 </body>
