@@ -3,255 +3,786 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kilkenny Haunted Dark Tours | After-dark & Daytime Walking Tours</title>
-  <meta name="description" content="Explore Kilkenny’s haunted past by day or night. Authentic walking tours through the city’s medieval streets, legends, and ghostly tales." />
+  <title>Kilkenny Haunted Dark Tours | After-dark &amp; Daytime Walking Tours</title>
+  <meta name="description" content="Explore Kilkenny's haunted past by day or night. Authentic walking tours through the city's medieval streets, legends, and ghostly tales." />
   <meta name="theme-color" content="#E1B34B" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Gothic fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== RESET & ROOT ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg:#0d0b0a;--bg-soft:#1a1613;--text:#f2efe9;--muted:#b6a78a;
-      --accent:#E1B34B;--accent-2:#ffcf5f;--maxw:1120px;--radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.45)
-    }
-    html{scroll-behavior:smooth}*,*::before,*::after{box-sizing:border-box}
-    body{margin:0;font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    a{color:var(--accent)}a:hover{text-decoration:underline}
-    header{position:sticky;top:0;z-index:50;background:rgba(13,11,10,.9);border-bottom:1px solid rgba(255,255,255,.1)}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;color:var(--accent);font-family:'Cormorant Garamond',serif;font-weight:700}
-    .menu{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-    .menu a{color:var(--text);opacity:.85}.menu a:hover{color:var(--accent-2);opacity:1}
-    .btn{display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#1a1100;font-weight:700;text-decoration:none;transition:filter .2s ease,transform .2s ease}
-    .btn:hover{filter:brightness(1.1);transform:translateY(-2px)}
-    .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
-    section{padding:64px 0}
-    h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--accent-2)}
-    h1{font-size:clamp(32px,4.5vw,46px)}h2{font-size:clamp(24px,3.2vw,34px)}
-    .sub{color:var(--muted);margin-bottom:20px}
-    .card{background:var(--bg-soft);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-    table{width:100%;border-collapse:collapse;background:#14110f;color:var(--text);border:1px solid rgba(255,255,255,.1)}
-    th,td{text-align:left;padding:12px 14px}thead{background:#1f1a17;color:var(--accent-2)}
-    details{background:var(--bg-soft);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:14px 16px;margin:10px 0;color:var(--text)}
-    footer{padding:40px 0 50px;color:var(--muted);border-top:1px solid rgba(255,255,255,.1);background:#0a0908;text-align:center}
-    .tiny{font-size:.9rem}
-    iframe{border:0;width:100%;height:360px;border-radius:12px}
-
-    /* ✅ Carousel Styles */
-    .carousel-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 480px;
-      background-color: var(--bg);
-      position: relative;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+      --bg:      #07050a;
+      --bg-soft: #0f0914;
+      --bg-card: #140c18;
+      --text:    #ede5d8;
+      --muted:   #8a7a68;
+      --gold:    #E1B34B;
+      --gold-2:  #ffcf5f;
+      --blood:   #7a1515;
+      --blood-2: #b01f2a;
+      --ember:   #c96a1a;
+      --maxw:    1120px;
+      --r:       12px;
     }
 
-    .carousel {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      height: 100%;
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7; font-size: 18px;
     }
 
-    .carousel img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* keeps full image */
-      background-color: #000;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      cursor: pointer;
+    a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--gold-2); }
+    img { max-width: 100%; display: block; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7,5,10,0.93);
+      border-bottom: 1px solid rgba(225,179,75,0.18);
+      backdrop-filter: blur(12px) saturate(130%);
     }
 
-    .carousel img.active {opacity: 1;}
-
-    .carousel::after {
-      content: "Click or wait to view next →";
-      position: absolute;
-      bottom: 12px;
-      right: 20px;
-      color: rgba(255,255,255,0.8);
-      font-size: 14px;
-      background: rgba(0,0,0,0.3);
-      padding: 4px 10px;
-      border-radius: 6px;
+    .nav-wrap {
+      display: flex; align-items: center;
+      justify-content: space-between; padding: 16px 0;
     }
 
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .brand:hover { color: var(--gold-2); }
+    .brand-icon { font-size: 1.2em; }
+
+    .menu {
+      display: flex; gap: 22px; align-items: center;
+    }
+    .menu a {
+      color: var(--text); opacity: 0.85;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    .menu a:hover { color: var(--gold); opacity: 1; }
+
+    .btn-book {
+      display: inline-block;
+      padding: 9px 20px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #160800 !important; opacity: 1 !important;
+      border-radius: 3px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(225,179,75,0.28);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(225,179,75,0.5);
+    }
+
+    .burger {
+      display: none; background: transparent;
+      border: 1px solid rgba(225,179,75,0.3);
+      border-radius: 8px; padding: 8px 12px;
+      color: var(--gold); font-size: 1.1rem; cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .menu {
+        display: none; position: absolute;
+        top: 64px; left: 20px; right: 20px;
+        background: rgba(9,6,14,0.98);
+        border: 1px solid rgba(225,179,75,0.18);
+        border-radius: 12px; padding: 16px 20px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.75);
+        flex-direction: column; align-items: flex-start; gap: 4px;
+      }
+      .menu a, .btn-book { display: block; padding: 10px 0; width: 100%; }
+      .btn-book { text-align: center; margin-top: 8px; }
+      .menu.open { display: flex; }
+      .burger { display: block; }
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block; cursor: pointer; border: none;
+      padding: 13px 28px; border-radius: 3px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blood), var(--blood-2));
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(176,31,42,0.4), inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .btn-primary:hover {
+      color: #fff; transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(176,31,42,0.6), inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #160800;
+      box-shadow: 0 4px 24px rgba(225,179,75,0.35);
+    }
+    .btn-gold:hover {
+      color: #160800; transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(225,179,75,0.55);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--gold);
+      border: 1px solid rgba(225,179,75,0.5);
+    }
+    .btn-ghost:hover { color: var(--gold-2); border-color: var(--gold); background: rgba(225,179,75,0.07); }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/hero.png') center/cover no-repeat;
+      filter: brightness(0.2) saturate(0.6);
+      transform: scale(1.06);
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 90% 60% at 50% 100%, rgba(100,15,15,0.35) 0%, transparent 65%),
+        linear-gradient(to bottom,
+          rgba(7,5,10,0.6) 0%, rgba(7,5,10,0.1) 35%,
+          rgba(7,5,10,0.1) 65%, rgba(7,5,10,0.88) 100%);
+    }
+
+    .fog-layer { position: absolute; inset: 0; pointer-events: none; }
+    .fog-1 {
+      background:
+        radial-gradient(ellipse 140% 35% at 15% 85%, rgba(170,140,90,0.10) 0%, transparent 65%),
+        radial-gradient(ellipse 100% 25% at 85% 90%, rgba(150,120,75,0.08) 0%, transparent 60%);
+      animation: fog1 14s ease-in-out infinite;
+    }
+    .fog-2 {
+      background: radial-gradient(ellipse 160% 28% at 50% 100%, rgba(190,155,100,0.08) 0%, transparent 60%);
+      animation: fog2 20s ease-in-out infinite;
+    }
+    .fog-3 {
+      background:
+        radial-gradient(ellipse 70% 18% at 25% 72%, rgba(155,125,85,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 20% at 75% 78%, rgba(140,110,75,0.05) 0%, transparent 55%);
+      animation: fog3 26s ease-in-out infinite;
+    }
+
+    @keyframes fog1 {
+      0%,100% { transform: translateX(0) translateY(0); opacity: 0.7; }
+      33%      { transform: translateX(2.5%) translateY(-1.2%); opacity: 1; }
+      66%      { transform: translateX(-2%) translateY(1%); opacity: 0.55; }
+    }
+    @keyframes fog2 {
+      0%,100% { transform: translateX(0) scaleX(1); opacity: 0.65; }
+      50%      { transform: translateX(-3.5%) scaleX(1.06); opacity: 1; }
+    }
+    @keyframes fog3 {
+      0%,100% { transform: translateX(0); opacity: 0.45; }
+      40%      { transform: translateX(3%); opacity: 0.85; }
+      80%      { transform: translateX(-2.5%); opacity: 0.5; }
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      padding: 100px 24px 80px; max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem; letter-spacing: 0.38em;
+      text-transform: uppercase; color: var(--gold);
+      opacity: 0.8; margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel Decorative', 'Cinzel', serif;
+      font-weight: 900; font-size: clamp(2rem, 5.8vw, 5rem);
+      line-height: 1.1; color: #fff;
+      text-shadow: 0 0 60px rgba(225,179,75,0.22), 0 2px 30px rgba(0,0,0,0.9);
+      margin-bottom: 28px; letter-spacing: 0.01em;
+    }
+    .hero h1 .hi { color: var(--gold); }
+
+    .hero-body {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(237,229,216,0.8);
+      max-width: 640px; margin: 0 auto 12px;
+      line-height: 1.75;
+    }
+    .hero-body em { font-style: italic; color: rgba(237,229,216,0.7); }
+
+    .hero-cta {
+      display: flex; gap: 16px;
+      justify-content: center; flex-wrap: wrap;
+      margin: 28px 0 18px;
+    }
+
+    .hero-note { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+
+    .scroll-cue {
+      position: absolute; bottom: 30px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      opacity: 0.4; animation: cueFloat 2.4s ease-in-out infinite;
+    }
+    .scroll-cue span {
+      font-family: 'Cinzel', serif; font-size: 0.56rem;
+      letter-spacing: 0.22em; color: var(--gold);
+    }
+    @keyframes cueFloat {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 80px 0; }
+
+    .sec-label {
+      display: block; font-family: 'Cinzel', serif;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--blood-2);
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 { font-family: 'Cinzel', serif; }
+
+    h2 {
+      font-size: clamp(1.55rem, 3vw, 2.3rem);
+      color: var(--gold); margin-bottom: 10px; letter-spacing: 0.02em;
+    }
+
+    h3 { font-size: 1.15rem; color: var(--gold-2); margin-bottom: 14px; }
+
+    .rule {
+      width: 56px; height: 1px; margin: 14px 0 24px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .sub {
+      color: var(--muted); font-style: italic;
+      margin-bottom: 28px; font-size: 1rem; line-height: 1.65;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: linear-gradient(145deg, rgba(22,14,28,0.95), rgba(12,8,16,0.98));
+      border: 1px solid rgba(225,179,75,0.14);
+      border-radius: var(--r); padding: 28px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.55);
+    }
+
+    /* ===== TABLE ===== */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; color: var(--text); }
+    th, td { text-align: left; padding: 14px 20px; }
+    thead tr { background: rgba(90,15,15,0.35); border-bottom: 1px solid rgba(225,179,75,0.18); }
+    thead th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s; }
+    tbody tr:hover { background: rgba(255,255,255,0.025); }
+    tbody tr:last-child { border-bottom: none; }
+    .price-hi { color: var(--gold-2); }
+    .table-note { padding: 12px 20px; font-size: 0.85rem; color: var(--muted); font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    /* ===== MEETING POINT ===== */
+    .map-wrap { border-radius: var(--r); overflow: hidden; border: 1px solid rgba(225,179,75,0.14); box-shadow: 0 12px 48px rgba(0,0,0,0.55); }
+    .map-wrap iframe { width: 100%; height: 400px; border: 0; display: block; }
+
+    /* ===== GALLERY ===== */
+    #gallery { background: rgba(9,5,13,0.55); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 440px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    .gal-item {
+      position: relative; overflow: hidden;
+      border-radius: 10px; cursor: zoom-in;
+      aspect-ratio: 4/3;
+      border: 1px solid rgba(225,179,75,0.1);
+      background: var(--bg-card);
+    }
+    .gal-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.55s ease, filter 0.4s;
+      filter: brightness(0.82) saturate(0.88);
+    }
+    .gal-item:hover img { transform: scale(1.07); filter: brightness(1.02) saturate(1.05); }
+    .gal-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
+      transition: opacity 0.35s;
+    }
+    .gal-item:hover::after { opacity: 0.3; }
+
+    /* ===== LIGHTBOX ===== */
     .lightbox {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.93);
+      display: none; place-items: center;
+      padding: 28px; z-index: 1000;
+      backdrop-filter: blur(6px);
     }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    .lightbox.open { display: grid; }
+
+    .lb-inner {
+      position: relative; max-width: min(1100px,94vw);
+      animation: lbIn 0.3s cubic-bezier(.22,1,.36,1);
     }
-    .lightbox.visible {display: flex;}
+    @keyframes lbIn {
+      from { opacity: 0; transform: scale(0.93); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .lb-close {
+      position: absolute; top: -44px; right: 0;
+      background: none; border: none;
+      color: rgba(255,255,255,0.75); font-size: 2.2rem;
+      cursor: pointer; transition: color 0.2s; line-height: 1;
+    }
+    .lb-close:hover { color: #fff; }
+
+    .lb-img {
+      width: 100%; height: auto; max-height: 84vh;
+      object-fit: contain; display: block;
+      border-radius: 8px; box-shadow: 0 24px 90px rgba(0,0,0,0.85);
+    }
+    .lb-cap { color: rgba(255,255,255,0.6); margin-top: 12px; text-align: center; font-style: italic; font-size: 0.9rem; }
+
+    /* ===== FAQs ===== */
+    .faq-stack { display: flex; flex-direction: column; gap: 10px; }
+
+    details {
+      background: linear-gradient(135deg, rgba(20,12,24,0.97), rgba(11,7,15,0.99));
+      border: 1px solid rgba(225,179,75,0.11);
+      border-radius: 10px; overflow: hidden; transition: border-color 0.3s;
+    }
+    details[open] { border-color: rgba(225,179,75,0.28); }
+
+    summary {
+      padding: 18px 24px; cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem; letter-spacing: 0.02em; color: var(--text);
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+      user-select: none; transition: color 0.2s;
+    }
+    summary:hover { color: var(--gold); }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+'; color: var(--gold);
+      font-size: 1.5rem; font-weight: 300; line-height: 1;
+      transition: transform 0.3s; flex-shrink: 0; margin-left: 16px;
+    }
+    details[open] summary { color: var(--gold); }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { padding: 0 24px 18px; color: var(--muted); line-height: 1.75; font-size: 0.98rem; }
+
+    /* ===== BOOKING CTA ===== */
+    #contact {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(90,12,12,0.25) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(7,5,10,0) 0%, rgba(60,8,8,0.14) 100%);
+      border-top: 1px solid rgba(120,18,18,0.22);
+    }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    @media (max-width: 680px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    .btn-cluster { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+
+    .tiny { font-size: 0.85rem; color: var(--muted); }
+    .tiny a { color: var(--gold); }
+
+    .enquiry-form label {
+      display: block; font-family: 'Cinzel', serif;
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 7px; margin-top: 16px;
+    }
+    .enquiry-form label:first-of-type { margin-top: 0; }
+
+    .enquiry-form input, .enquiry-form textarea {
+      width: 100%; padding: 12px 15px; border-radius: 8px;
+      border: 1px solid rgba(225,179,75,0.15);
+      background: rgba(8,5,12,0.8); color: var(--text);
+      font-family: 'EB Garamond', serif; font-size: 1rem; line-height: 1.5;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .enquiry-form input:focus, .enquiry-form textarea:focus {
+      outline: none; border-color: rgba(225,179,75,0.45);
+      box-shadow: 0 0 0 3px rgba(225,179,75,0.07);
+    }
+    .enquiry-form textarea { resize: vertical; }
+    .enquiry-form button { width: 100%; margin-top: 18px; border: none; cursor: pointer; font-family: 'Cinzel', serif; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 38px 0 48px;
+      background: rgba(4,2,7,0.9);
+      border-top: 1px solid rgba(225,179,75,0.1);
+      text-align: center;
+    }
+    footer p { font-size: 0.82rem; color: var(--muted); }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.in-view { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
   </style>
 </head>
-
 <body>
+
+  <!-- HEADER -->
   <header>
-    <div class="wrap nav">
-      <a class="brand" href="#">Kilkenny Haunted Dark Tours</a>
-      <nav class="menu">
-        <a href="#times">Times & Prices</a>
+    <div class="wrap nav-wrap">
+      <a class="brand" href="#">
+        <span class="brand-icon" aria-hidden="true">🕯</span>
+        Kilkenny Haunted Dark Tours
+      </a>
+      <nav class="menu" id="menu">
+        <a href="#times">Times &amp; Prices</a>
         <a href="#daytour">Day Tour</a>
         <a href="#meeting">Meeting point</a>
         <a href="#gallery">Gallery</a>
         <a href="#faqs">FAQs</a>
-        <a href="#contact" class="btn">Book now</a>
+        <a href="#contact" class="btn-book">Book now</a>
       </nav>
+      <button class="burger" aria-label="Toggle menu" aria-controls="menu" aria-expanded="false" onclick="toggleMenu(this)">☰</button>
     </div>
   </header>
 
-  <main class="wrap">
+  <main>
+
+    <!-- ======================== HERO ======================== -->
     <section class="hero">
-      <h1>Step into Kilkenny’s dark past</h1>
-      <p>Step into the shadows of Kilkenny’s medieval streets and uncover the city’s darkest secrets. Our evening walking tour brings you face to face with the real haunted history of Ireland’s most atmospheric city.</p>
-      <p>Beginning at the magnificent Kilkenny Castle, you’ll journey through centuries of chilling tales — from ghostly apparitions to eerie legends whispered through time. Follow your guide down Mary’s Lane and through the narrow Butter Slip, where spirits are said to linger long after nightfall. The tour concludes at the historic Courthouse, a site steeped in stories of trials, tragedy, and restless souls.</p>
-      <p>Every story told on this tour is rooted in real events, real people, and real hauntings — no gimmicks, no jump scares, just the true dark side of Kilkenny brought to life through expert storytelling.</p>
-      <p><em>Join us if you dare... and see Kilkenny as you’ve never seen it before.</em></p>
-      <div style="margin-top:16px;">
-        <a class="btn" href="#contact">Book the Night Tour</a>
-        <a class="btn ghost" href="#times">See prices</a>
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="fog-layer fog-1" aria-hidden="true"></div>
+      <div class="fog-layer fog-2" aria-hidden="true"></div>
+      <div class="fog-layer fog-3" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <span class="hero-eyebrow">After dark walking tours &bull; Kilkenny, Ireland</span>
+        <h1>Step into<br>Kilkenny's<br><span class="hi">Dark Past</span></h1>
+
+        <p class="hero-body">
+          Step into the shadows of Kilkenny's medieval streets and uncover the city's darkest secrets.
+          Our evening walking tour brings you face to face with the real haunted history of Ireland's most
+          atmospheric city.
+        </p>
+        <p class="hero-body">
+          Beginning at the magnificent Kilkenny Castle, you'll journey through centuries of chilling tales &mdash;
+          from ghostly apparitions to eerie legends whispered through time. Follow your guide down Mary's Lane
+          and through the narrow Butter Slip, where spirits are said to linger long after nightfall.
+        </p>
+        <p class="hero-body">
+          <em>Join us if you dare&hellip; and see Kilkenny as you've never seen it before.</em>
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">Book the Night Tour</a>
+          <a class="btn btn-ghost" href="#times">See Prices</a>
+        </div>
+        <p class="hero-note">Operating year round &bull; Private groups welcome</p>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
       </div>
     </section>
 
+    <!-- ======================== TIMES & PRICES ======================== -->
     <section id="times">
-      <h2>Times & Prices</h2>
-      <p class="sub">Seasonal schedules and offers may apply. Contact us to confirm availability for your date.</p>
-      <div class="card" style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr><th>Tour</th><th>Start Time</th><th>Duration</th><th>Price</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Kilkenny Haunted Dark Tour</strong></td><td>Evenings</td><td>~60 mins</td><td><span style="color:var(--accent-2)">Adults €18</span> · Youth €13 · Child €12 · Under 5 free</td></tr>
-            <tr><td><strong>Private Tour</strong></td><td>By arrangement</td><td>Flexible</td><td>Group rates available</td></tr>
-          </tbody>
-        </table>
-        <p class="tiny" style="margin-top:10px;color:var(--muted);">Child and family options available. Accessibility notes on request.</p>
-      </div>
-    </section>
-
-    <section id="daytour">
-      <h2>Daytime Haunted Tour</h2>
-      <p class="sub">See Kilkenny’s haunted past in a whole new light. Our daytime walking tour follows the same route as our evening experience — from Kilkenny Castle through Mary’s Lane and the Butter Slip, ending at the historic Courthouse — but with a focus on the real stories, legends, and darker chapters that shaped the city through the centuries.</p>
-      <p>Discover how truth and folklore intertwine in Kilkenny’s medieval streets as you explore tales of witchcraft, crime, and mystery beneath the surface of this beautiful city.</p>
-      <p><em>Perfect for those who love history with a twist — all the atmosphere, none of the darkness.</em></p>
-      <div class="card" style="overflow-x:auto;">
-        <table>
-          <thead><tr><th>Tour</th><th>Start Times</th><th>Duration</th><th>Price</th></tr></thead>
-          <tbody><tr><td><strong>Kilkenny Haunted Day Tour</strong></td><td>10:30 AM · 2:00 PM</td><td>~60 mins</td><td><span style="color:var(--accent-2)">Adults €18</span> · Youth €13 · Child €12 · Under 5 free</td></tr></tbody>
-        </table>
-        <div style="margin-top:18px;"><a class="btn" href="#contact">Book a Day Tour</a></div>
-      </div>
-    </section>
-
-    <section id="meeting">
-      <h2>Meeting point</h2>
-      <p class="sub">We meet at a central landmark in Kilkenny, the Kilkenny Castle. Your confirmation email will include exact directions.</p>
-      <div class="card"><iframe src="https://www.google.com/maps?q=Kilkenny%20Castle&output=embed" title="Map of meeting point in Kilkenny"></iframe></div>
-    </section>
-
-    <!-- ✅ REPLACED GALLERY SECTION -->
-    <section id="gallery">
-      <h2>Gallery</h2>
-      <p class="sub">A glimpse of the lanes, arches and faces you’ll meet along the way.</p>
-      <div class="carousel-container">
-        <div class="carousel">
-          <img src="assets/gallery/001.jpeg" class="active" alt="">
-          <img src="assets/gallery/002.jpeg" alt="">
-          <img src="assets/gallery/003.jpeg" alt="">
-          <img src="assets/gallery/004.jpeg" alt="">
-          <img src="assets/gallery/005.jpeg" alt="">
-          <img src="assets/gallery/006.jpeg" alt="">
-          <img src="assets/gallery/007.jpeg" alt="">
-          <img src="assets/gallery/008.jpeg" alt="">
-          <img src="assets/gallery/009.jpeg" alt="">
-          <img src="assets/gallery/010.jpeg" alt="">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">What awaits</span>
+          <h2>Times &amp; Prices</h2>
+          <div class="rule"></div>
+          <p class="sub">Seasonal schedules and offers may apply. Contact us to confirm availability for your date.</p>
+        </div>
+        <div class="card reveal d1">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Tour</th><th>Start Time</th><th>Duration</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Kilkenny Haunted Dark Tour</strong></td>
+                  <td>Evenings</td>
+                  <td>~60 mins</td>
+                  <td><span class="price-hi">Adults &euro;18</span> &middot; Youth &euro;13 &middot; Child &euro;12 &middot; Under 5 free</td>
+                </tr>
+                <tr>
+                  <td><strong>Private Tour</strong></td>
+                  <td>By arrangement</td>
+                  <td>Flexible</td>
+                  <td>Group rates available</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">Child and family options available. Accessibility notes on request.</p>
         </div>
       </div>
     </section>
 
-    <section id="faqs">
-      <h2>FAQs</h2>
-      <details><summary>Is it suitable for children?</summary><p>Our standard walks focus on history and folklore with a spooky atmosphere rather than jump scares. We can adjust tone for younger groups with advance notice.</p></details>
-      <details><summary>What should I bring?</summary><p>Comfortable shoes, a warm layer and a small umbrella if rain is forecast. The route is mostly flat with regular stops.</p></details>
-      <details><summary>Is it accessible?</summary><p>Parts of the old town have cobbles and narrow paths. Let us know any requirements and we will plan the most suitable route.</p></details>
-      <details><summary>What happens in bad weather?</summary><p>Tours run in most conditions. In severe weather we will contact you with options to reschedule or refund.</p></details>
-    </section>
-
-    <section id="contact">
-      <h2>Book or enquire</h2>
-      <p class="sub">Tell us your preferred date, group size and any access needs. We reply quickly.</p>
-      <div class="card">
-        <p><a class="btn" href="mailto:kilkennyhaunteddarktours@gmail.com">Email</a>
-        <a class="btn ghost" href="https://wa.me/353876230932" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn" href="https://www.viator.com/tours/Kilkenny/Kilkenny-City-Free-guided-tour/d24499-250556P1" target="_blank" rel="noopener">Book on Viator</a></p>
-        <p class="tiny">Prefer a call? <a href="tel:+353876230932">+353 (87) 623 0932</a></p>
-        <form name="enquiry" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="enquiry" />
-          <label for="name" class="tiny">Name</label><input id="name" name="name" required style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);margin-bottom:8px;background:#14110f;color:var(--text)"/>
-          <label for="email" class="tiny">Email</label><input id="email" name="email" type="email" required style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);margin-bottom:8px;background:#14110f;color:var(--text)"/>
-          <label for="message" class="tiny">Message</label><textarea id="message" name="message" rows="4" required style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#14110f;color:var(--text);margin-bottom:8px"></textarea>
-          <button type="submit" class="btn" style="width:100%">Send</button>
-        </form>
+    <!-- ======================== DAYTIME TOUR ======================== -->
+    <section id="daytour" style="background: rgba(10,6,14,0.5);">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Another way to explore</span>
+          <h2>Daytime Haunted Tour</h2>
+          <div class="rule"></div>
+          <p class="sub">See Kilkenny's haunted past in a whole new light. Our daytime walking tour follows the same route as our evening experience &mdash; from Kilkenny Castle through Mary's Lane and the Butter Slip, ending at the historic Courthouse &mdash; but with a focus on the real stories, legends, and darker chapters that shaped the city through the centuries.</p>
+          <p style="color:var(--text); margin-bottom:16px;">Discover how truth and folklore intertwine in Kilkenny's medieval streets as you explore tales of witchcraft, crime, and mystery beneath the surface of this beautiful city.</p>
+          <p style="font-style:italic; color:var(--muted); margin-bottom:32px;">Perfect for those who love history with a twist &mdash; all the atmosphere, none of the darkness.</p>
+        </div>
+        <div class="card reveal d1">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Tour</th><th>Start Times</th><th>Duration</th><th>Price</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Kilkenny Haunted Day Tour</strong></td>
+                  <td>10:30 AM &middot; 2:00 PM</td>
+                  <td>~60 mins</td>
+                  <td><span class="price-hi">Adults &euro;18</span> &middot; Youth &euro;13 &middot; Child &euro;12 &middot; Under 5 free</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="padding:20px 20px 4px;">
+            <a class="btn btn-primary" href="#contact">Book a Day Tour</a>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- ======================== MEETING POINT ======================== -->
+    <section id="meeting">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Where we gather</span>
+          <h2>Meeting Point</h2>
+          <div class="rule"></div>
+          <p class="sub">We meet at a central landmark in Kilkenny. Your confirmation email will include exact directions.</p>
+        </div>
+        <div class="map-wrap reveal d1">
+          <iframe src="https://www.google.com/maps?q=Kilkenny%20Castle&output=embed" title="Map of meeting point in Kilkenny" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== GALLERY ======================== -->
+    <section id="gallery">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Through the shadows</span>
+          <h2>Gallery</h2>
+          <div class="rule"></div>
+          <p class="sub">A glimpse of the lanes, arches and faces you'll meet along the way.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gal-item reveal d1" role="button" tabindex="0" aria-label="View: Night tour group silhouetted against lit stone arch in Kilkenny">
+            <img src="/images/gallery-1.png" alt="Night tour group silhouetted against lit stone arch in Kilkenny" loading="lazy"/>
+          </div>
+          <div class="gal-item reveal d2" role="button" tabindex="0" aria-label="View: Guided group by stone wall at night">
+            <img src="/images/gallery-2.png" alt="Guided group by stone wall at night" loading="lazy"/>
+          </div>
+          <div class="gal-item reveal d3" role="button" tabindex="0" aria-label="View: Visitors gathered on medieval steps">
+            <img src="/images/gallery-3.png" alt="Visitors gathered on medieval steps" loading="lazy"/>
+          </div>
+          <div class="gal-item reveal d1" role="button" tabindex="0" aria-label="View: Narrow medieval alleyway with arches">
+            <img src="/images/gallery-4.png" alt="Narrow medieval alleyway with arches" loading="lazy"/>
+          </div>
+          <div class="gal-item reveal d2" role="button" tabindex="0" aria-label="View: Hen party smiling during an evening tour">
+            <img src="/images/gallery-5.png" alt="Hen party smiling during an evening tour" loading="lazy"/>
+          </div>
+          <div class="gal-item reveal d3" role="button" tabindex="0" aria-label="View: Guide speaking to group under warm lantern light">
+            <img src="/images/gallery-6.png" alt="Guide speaking to group under warm lantern light" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== FAQs ======================== -->
+    <section id="faqs">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Your questions answered</span>
+          <h2>FAQs</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="faq-stack">
+          <details class="reveal d1">
+            <summary>Is it suitable for children?</summary>
+            <p>Our standard walks focus on history and folklore with a spooky atmosphere rather than jump scares. We can adjust tone for younger groups with advance notice.</p>
+          </details>
+          <details class="reveal d2">
+            <summary>What should I bring?</summary>
+            <p>Comfortable shoes, a warm layer and a small umbrella if rain is forecast. The route is mostly flat with regular stops.</p>
+          </details>
+          <details class="reveal d3">
+            <summary>Is it accessible?</summary>
+            <p>Parts of the old town have cobbles and narrow paths. Let us know any requirements and we will plan the most suitable route.</p>
+          </details>
+          <details class="reveal d4">
+            <summary>What happens in bad weather?</summary>
+            <p>Tours run in most conditions. In severe weather we will contact you with options to reschedule or refund.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== BOOK / CONTACT ======================== -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="reveal" style="text-align:center; max-width:580px; margin: 0 auto 48px;">
+          <span class="sec-label">Dare to join us</span>
+          <h2>Book or Enquire</h2>
+          <div class="rule" style="margin:14px auto 22px;"></div>
+          <p class="sub">Tell us your preferred date, group size and any access needs. We reply quickly.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="reveal d1">
+            <h3>Message us directly</h3>
+            <div class="btn-cluster">
+              <a class="btn btn-primary" href="mailto:kilkennyhaunteddarktours@gmail.com">Email</a>
+              <a class="btn btn-ghost" href="https://wa.me/353876230932" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn-gold" href="https://www.viator.com/tours/Kilkenny/Kilkenny-City-Free-guided-tour/d24499-250556P1" target="_blank" rel="noopener">Book on Viator</a>
+            </div>
+            <p class="tiny">Prefer a call? <a href="tel:+353876230932">+353 (87) 623 0932</a></p>
+          </div>
+
+          <form name="enquiry" method="POST" data-netlify="true" class="enquiry-form reveal d2">
+            <input type="hidden" name="form-name" value="enquiry" />
+
+            <label for="name">Name</label>
+            <input id="name" name="name" required autocomplete="name" />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© <span id="year"></span> Kilkenny Haunted Dark Tours · Kilkenny, Ireland</p>
+    <p>&copy; <span id="year"></span> Kilkenny Haunted Dark Tours &middot; Kilkenny, Ireland</p>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lb-inner">
+      <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+      <img class="lb-img" id="lb-img" alt="" />
+      <p class="lb-cap" id="lb-cap"></p>
+    </div>
+  </div>
+
   <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    const slides=document.querySelectorAll('.carousel img');
-    let index=0;
-    function nextSlide(){
-      slides[index].classList.remove('active');
-      index=(index+1)%slides.length;
-      slides[index].classList.add('active');
+    // Mobile menu
+    function toggleMenu(btn) {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', menu.classList.contains('open') ? 'true' : 'false');
     }
-    let autoSlide=setInterval(nextSlide,4000);
-    document.querySelector('.carousel').addEventListener('click',()=>{
-      clearInterval(autoSlide);
-      nextSlide();
-      autoSlide=setInterval(nextSlide,4000);
-    });
+    document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('menu').classList.remove('open');
+    }));
 
-    const lightbox=document.createElement('div');
-    lightbox.classList.add('lightbox');
-    document.body.appendChild(lightbox);
-    const lightboxImg=document.createElement('img');
-    lightbox.appendChild(lightboxImg);
-    slides.forEach(img=>{
-      img.addEventListener('click',e=>{
-        clearInterval(autoSlide);
-        lightboxImg.src=e.target.src;
-        lightbox.classList.add('visible');
+    // Lightbox
+    (function () {
+      const lb     = document.getElementById('lightbox');
+      const lbImg  = document.getElementById('lb-img');
+      const lbCap  = document.getElementById('lb-cap');
+
+      function open(src, alt) {
+        lbImg.src = src; lbImg.alt = alt; lbCap.textContent = alt;
+        lb.classList.add('open'); document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.gal-item').forEach(item => {
+        const img = item.querySelector('img');
+        item.addEventListener('click', () => open(img.src, img.alt));
+        item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img.src, img.alt); } });
       });
-    });
-    lightbox.addEventListener('click',()=>{
-      lightbox.classList.remove('visible');
-      autoSlide=setInterval(nextSlide,4000);
-    });
+
+      document.getElementById('lb-close').addEventListener('click', close);
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
+
+    // Scroll reveal
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!window.IntersectionObserver) { els.forEach(el => el.classList.add('in-view')); return; }
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+      els.forEach(el => obs.observe(el));
+    })();
   </script>
 </body>
 </html>
